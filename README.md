@@ -15,6 +15,7 @@ This Cordova plugin allows you to provision eSIMs on iOS devices by providing th
 To install this plugin, follow these steps:
 
 ### Usage
+```sh
 JavaScript Interface
 
 The plugin provides a JavaScript interface to interact with the native iOS code. Below is an example of how to use it:
