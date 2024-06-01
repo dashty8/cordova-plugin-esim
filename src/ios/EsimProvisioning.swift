@@ -4,9 +4,20 @@ import CoreTelephony
 @objc(EsimProvisioning) class EsimProvisioning: CDVPlugin {
     @objc(addPlan:)
     func addPlan(command: CDVInvokedUrlCommand) {
-        let cellularPlanProvisioning = CTCellularPlanProvisioning()
+        guard let iccid = command.arguments[0] as? String,
+              let activationCode = command.arguments[1] as? String,
+              let smdpAddress = command.arguments[2] as? String else {
+            let pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: "Invalid arguments")
+            self.commandDelegate.send(pluginResult, callbackId: command.callbackId)
+            return
+        }
+
         let esimInfo = CTCellularPlanProvisioningRequest()
-        // Populate esimInfo with necessary data
+        esimInfo.address = smdpAddress
+        esimInfo.activationCode = activationCode
+        esimInfo.iccid = iccid
+
+        let cellularPlanProvisioning = CTCellularPlanProvisioning()
 
         cellularPlanProvisioning.add(esimInfo) { (result) in
             var pluginResult = CDVPluginResult()

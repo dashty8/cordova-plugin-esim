@@ -2,7 +2,18 @@
         id="cordova-plugin-esim"
         version="1.0.0">
     <name>ESIMProvisioning</name>
+    <description>A Cordova plugin for eSIM provisioning</description>
+    <license>MIT</license>
+    <keywords>ecosystem:cordova</keywords>
     <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="EsimProvisioning">
+                <param name="ios-package" value="EsimProvisioning" />
+            </feature>
+        </config-file>
         <source-file src="src/ios/EsimProvisioning.swift" />
     </platform>
+    <js-module src="www/esim.js" name="esim">
+        <clobbers target="cordova.plugins.esimProvisioning" />
+    </js-module>
 </plugin>
