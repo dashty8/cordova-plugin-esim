@@ -14,8 +14,15 @@ This Cordova plugin allows you to provision eSIMs on iOS devices by providing th
 
 To install this plugin, follow these steps:
 
-### Usage
+### 1. Clone the Repository
+
 ```sh
+git clone https://github.com/your-username/cordova-plugin-esim.git
+cd cordova-plugin-esim
+
+cordova plugin add path/to/cordova-plugin-esim
+
+## Usage
 JavaScript Interface
 
 The plugin provides a JavaScript interface to interact with the native iOS code. Below is an example of how to use it:
@@ -33,15 +40,6 @@ cordova.plugins.esimProvisioning.addPlan(iccid, activationCode, smdpAddress, fun
     console.error('eSIM provisioning failed: ' + error);
     // Handle error
 });
-
-### 1. Clone the Repository
-
-```sh
-git clone https://github.com/your-username/cordova-plugin-esim.git
-cd cordova-plugin-esim
-
-cordova plugin add path/to/cordova-plugin-esim
-
 
 
 
