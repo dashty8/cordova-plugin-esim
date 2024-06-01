@@ -22,7 +22,8 @@ cd cordova-plugin-esim
 
 cordova plugin add path/to/cordova-plugin-esim
 
-## Usage
+
+### Usage
 JavaScript Interface
 
 The plugin provides a JavaScript interface to interact with the native iOS code. Below is an example of how to use it:
@@ -40,3 +41,6 @@ cordova.plugins.esimProvisioning.addPlan(iccid, activationCode, smdpAddress, fun
     console.error('eSIM provisioning failed: ' + error);
     // Handle error
 });
+
+
+
