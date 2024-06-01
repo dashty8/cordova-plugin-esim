@@ -1,0 +1,15 @@
+{
+    "name": "cordova-plugin-esim",
+    "version": "1.0.0",
+    "description": "A Cordova plugin for eSIM provisioning",
+    "cordova": {
+        "id": "cordova-plugin-esim",
+        "platforms": ["ios"]
+    },
+    "keywords": [
+        "ecosystem:cordova",
+        "cordova-ios"
+    ],
+    "author": "Your Name",
+    "license": "MIT"
+}
