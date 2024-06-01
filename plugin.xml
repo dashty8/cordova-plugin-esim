@@ -1,34 +1,8 @@
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="cordova-plugin-esim"
-        version="1.0.0">
-    <name>ESIMProvisioning</name>
-    <description>A Cordova plugin for eSIM provisioning</description>
-    <license>MIT</license>
-    <keywords>ecosystem:cordova</keywords>
-    <platform name="ios">
-        <preference name="SwiftVersion" value="5.0" />
-        <config-file target="*-Info.plist" parent="/*">
-            <key>NSAppTransportSecurity</key>
-            <dict>
-                <key>NSAllowsArbitraryLoads</key>
-                <true/>
-            </dict>
-        </config-file>
-        <config-file target="*-Info.plist" parent="/*">
-            <key>NSLocationWhenInUseUsageDescription</key>
-            <string>We need access to your location for full functionality</string>
-        </config-file>
-        <config-file target="config.xml" parent="/*">
-            <feature name="EsimProvisioning">
-                <param name="ios-package" value="EsimProvisioning" />
-            </feature>
-        </config-file>
-        <source-file src="src/ios/EsimProvisioning.m" />
-        <header-file src="src/ios/EsimProvisioning.h" />
-        <header-file src="src/ios/Bridging-Header.h" />
-        <resource-file src="src/ios/Bridging-Header.h" target="Bridging-Header.h" />
-    </platform>
-    <js-module src="www/esim.js" name="esim">
-        <clobbers target="cordova.plugins.esimProvisioning" />
-    </js-module>
-</plugin>
+<platform name="ios">
+    <config-file target="config.xml" parent="/*">
+        <feature name="ESIM">
+            <param name="ios-package" value="ESIM"/>
+        </feature>
+    </config-file>
+    <source-file src="src/ios/ESIM.m" />
+</platform>
