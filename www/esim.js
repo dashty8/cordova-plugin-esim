@@ -1,9 +1,9 @@
 var exec = require('cordova/exec');
 
-var EsimProvisioning = {
-    addPlan: function(iccid, activationCode, smdpAddress, successCallback, errorCallback) {
-        exec(successCallback, errorCallback, "EsimProvisioning", "addPlan", [iccid, activationCode, smdpAddress]);
+var ESIMProvisioning = {
+    addPlan: function(arg0, success, error) {
+        exec(success, error, 'ESIMProvisioning', 'addPlan', [arg0]);
     }
 };
 
-module.exports = EsimProvisioning;
+module.exports = ESIMProvisioning;

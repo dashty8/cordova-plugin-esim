@@ -1,36 +1,24 @@
-#import "EsimProvisioning.h"
-#import <CoreTelephony/CTCellularPlanProvisioning.h>
-#import <CoreTelephony/CTCellularPlanProvisioningRequest.h>
+#import <Cordova/CDV.h>
 
-@implementation EsimProvisioning
+@interface ESIMProvisioning : CDVPlugin
+
+- (void)addPlan:(CDVInvokedUrlCommand*)command;
+
+@end
+
+@implementation ESIMProvisioning
 
 - (void)addPlan:(CDVInvokedUrlCommand*)command {
-    NSString* iccid = [command.arguments objectAtIndex:0];
-    NSString* activationCode = [command.arguments objectAtIndex:1];
-    NSString* smdpAddress = [command.arguments objectAtIndex:2];
+    CDVPluginResult* pluginResult = nil;
+    NSString* arg0 = [command.arguments objectAtIndex:0];
 
-    if (iccid == nil || activationCode == nil || smdpAddress == nil) {
-        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Invalid arguments"];
-        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-        return;
+    if (arg0 != nil && [arg0 length] > 0) {
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:arg0];
+    } else {
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Expected one non-empty string argument."];
     }
 
-    CTCellularPlanProvisioningRequest* esimInfo = [[CTCellularPlanProvisioningRequest alloc] init];
-    [esimInfo setAddress:smdpAddress];
-    [esimInfo setActivationCode:activationCode];
-    [esimInfo setIccid:iccid];
-
-    CTCellularPlanProvisioning* cellularPlanProvisioning = [[CTCellularPlanProvisioning alloc] init];
-    
-    [cellularPlanProvisioning addPlanWith:esimInfo completionHandler:^(CTCellularPlanProvisioningAddPlanResult result) {
-        CDVPluginResult* pluginResult;
-        if (result == CTCellularPlanProvisioningAddPlanResultSuccess) {
-            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"eSIM provisioned successfully"];
-        } else {
-            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"eSIM provisioning failed"];
-        }
-        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-    }];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 @end
