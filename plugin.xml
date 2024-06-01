@@ -5,6 +5,7 @@
     <description>A Cordova plugin for eSIM provisioning</description>
     <license>MIT</license>
     <keywords>ecosystem:cordova</keywords>
+
     <platform name="ios">
         <preference name="SwiftVersion" value="5.0" />
         <config-file target="*-Info.plist" parent="/*">
@@ -14,20 +15,25 @@
                 <true/>
             </dict>
         </config-file>
+        <config-file target="*-Info.plist" parent="/*">
+            <key>NSLocationWhenInUseUsageDescription</key>
+            <string>We need access to your location for full functionality</string>
+        </config-file>
         <config-file target="config.xml" parent="/*">
             <feature name="EsimProvisioning">
                 <param name="ios-package" value="EsimProvisioning" />
             </feature>
         </config-file>
         <source-file src="src/ios/EsimProvisioning.swift" />
-        <source-file src="src/ios/Bridging-Header.h" />
         <header-file src="src/ios/Bridging-Header.h" />
         <resource-file src="src/ios/Bridging-Header.h" target="Bridging-Header.h" />
         <framework src="libstdc++.6.0.9.tbd" />
         <config-file target="config.xml" parent="/*">
             <preference name="ios-language" value="swift" />
+            <preference name="deployment-target" value="10.0" />
         </config-file>
     </platform>
+
     <js-module src="www/esim.js" name="esim">
         <clobbers target="cordova.plugins.esimProvisioning" />
     </js-module>
