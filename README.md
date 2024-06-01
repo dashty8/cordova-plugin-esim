@@ -1,5 +1,3 @@
-![image](https://github.com/dashty8/cordova-plugin-esim/assets/76230144/f2625359-0dfe-4e64-8eb6-05bda94bfa78)# Cordova Plugin for eSIM Provisioning
-
 ## Overview
 
 This Cordova plugin allows you to provision eSIMs on iOS devices by providing the necessary eSIM information such as ICCID, activation code, and SMDP address. It is designed to be integrated into OutSystems or any other Cordova-based mobile application.
